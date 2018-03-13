@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">QuizzesEverywhere</string>
+    <string name="quiz_image">Quiz image</string>
+    <string name="category">Category:</string>
+    <string name="last_score">Last score:</string>
+    <string name="progress_in_quiz">Progress in quiz:</string>
+</resources>
