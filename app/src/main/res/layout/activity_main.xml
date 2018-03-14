@@ -10,7 +10,7 @@
     tools:context="pl.nataliana.quizzeseverywhere.MainActivity">
 
     <ListView
-        android:id="@+id/quiz_card_view"
+        android:id="@+id/quiz_list_view"
         android:layout_width="366dp"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/basic_dimension"

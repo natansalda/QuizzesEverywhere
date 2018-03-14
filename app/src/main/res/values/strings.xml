@@ -4,4 +4,6 @@
     <string name="category">Category:</string>
     <string name="last_score">Last score:</string>
     <string name="progress_in_quiz">Progress in quiz:</string>
+    <string name="quiz_parcelable">Quiz parcelable</string>
+    <string name="quiz_id_extra">quiz_id_extra</string>
 </resources>
