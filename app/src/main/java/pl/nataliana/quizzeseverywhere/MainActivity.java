@@ -10,9 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestHandle;
@@ -24,32 +22,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 import pl.nataliana.quizzeseverywhere.Adapter.QuizAdapter;
 import pl.nataliana.quizzeseverywhere.Data.QuizDbContract;
 import pl.nataliana.quizzeseverywhere.Model.Quiz;
 
 public class MainActivity extends AppCompatActivity {
-
-    // Bind views with ButterKnife library
-    @BindView(R.id.list_item_quiz_title)
-    TextView list_item_quiz_title;
-    @BindView(R.id.list_item_quiz_image)
-    ImageView list_item_quiz_image;
-    @BindView(R.id.list_item_quiz_category_name)
-    TextView list_item_quiz_category_name;
-    @BindView(R.id.list_item_quiz_category_value)
-    TextView list_item_quiz_category_value;
-    @BindView(R.id.list_item_quiz_score_name)
-    TextView list_item_quiz_score_name;
-    @BindView(R.id.list_item_quiz_score_value)
-    TextView list_item_quiz_score_value;
-    @BindView(R.id.list_item_quiz_progress_name)
-    TextView list_item_quiz_progress_name;
-    @BindView(R.id.list_item_quiz_progress_value)
-    TextView list_item_quiz_progress_value;
 
     public static final String ALL_QUIZ_BASE_URL = "http://quiz.o2.pl/api/v1/quizzes/0/100";
     private static final String TAG = MainActivity.class.getSimpleName(); // For tagging purposes
@@ -60,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
         quizAdapter = new QuizAdapter(this, new ArrayList<Quiz>());
         listView = findViewById(R.id.quiz_list_view);
