@@ -3,10 +3,8 @@ package pl.nataliana.quizzeseverywhere;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Movie;
 import android.net.Uri;
 import android.os.Parcelable;
-import android.preference.PreferenceActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.RequestHandle;
 import com.loopj.android.http.TextHttpResponseHandler;
 
 import org.json.JSONArray;
@@ -27,8 +26,9 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cz.msebera.android.httpclient.entity.mime.Header;
+import cz.msebera.android.httpclient.Header;
 import pl.nataliana.quizzeseverywhere.Adapter.QuizAdapter;
+import pl.nataliana.quizzeseverywhere.Data.QuizDbContract;
 import pl.nataliana.quizzeseverywhere.Model.Quiz;
 
 public class MainActivity extends AppCompatActivity {
@@ -121,11 +121,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void showQuizes() {
         AsyncHttpClient client = new AsyncHttpClient();
-        String requestUrl = ALL_QUIZ_BASE_URL;
-        client.get(requestUrl, new TextHttpResponseHandler() { //TODO
+        RequestHandle requestHandle = client.get(ALL_QUIZ_BASE_URL, new TextHttpResponseHandler() {
 
-            @Override //TODO
-            public void onSuccess(int statusCode, PreferenceActivity.Header[] headers, String responseBody) {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseBody) {
                 try {
                     JSONObject jsonObj = new JSONObject(responseBody);
                     JSONArray quizzes = jsonObj.getJSONArray("results");
@@ -141,7 +140,6 @@ public class MainActivity extends AppCompatActivity {
                                 quiz.getInt("questions"), //num of questions
                                 quiz.getInt("id")); //quiz id
                     }
-
                     quizAdapter.clear();
                     for (Quiz quiz : quizList) {
                         if (quiz != null) {
@@ -159,17 +157,15 @@ public class MainActivity extends AppCompatActivity {
                 quizAdapter.notifyDataSetChanged();
             }
 
-            @Override //TODO
+            @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Log.d("Failed: ", "" + statusCode);
                 Log.d("Error : ", "" + throwable);
             }
         });
-
     }
 
-    private void showOnline() {
-        //TODO
+    private void showOffline() {
         Uri uri = QuizDbContract.QuizEntry.CONTENT_URI;
         ContentResolver resolver = getContentResolver();
         Cursor cursor = null;
