@@ -1,8 +1,11 @@
 package pl.nataliana.quizzeseverywhere;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.quiz_list_view);
 
         if (savedInstanceState == null) {
-            showQuizes();
+            if (isOnline() == true) {
+                showQuizes();
+            } else {
+                showOffline();
+            }
         } else {
             //Get data from local resources
             Parcelable[] parcelable = savedInstanceState.
@@ -104,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, String responseBody) {
                 try {
                     JSONObject jsonObj = new JSONObject(responseBody);
-                    JSONArray quizzes = jsonObj.getJSONArray("results");
+                    JSONArray quizzes = jsonObj.getJSONArray("items");
 
                     // looping through quizzes
                     Quiz[] quizList = new Quiz[quizzes.length()];
@@ -140,6 +147,14 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Error : ", "" + throwable);
             }
         });
+    }
+
+
+    private boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
     private void showOffline() {
