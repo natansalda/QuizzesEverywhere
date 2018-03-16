@@ -80,10 +80,17 @@ public class QuizAdapter extends ArrayAdapter {
                 .into(quizImageImageView);
         categoryValueTextView.setText(quizzes.get(position).getQuizCategory());
         quizScoreNameTextView.setText(R.string.last_score);
-        quizScoreValueTextView.setText("10");//quizzes.get(position).getLastScore());
+        if (quizzes.get(position).getLastScore() == 0) {
+            quizScoreValueTextView.setText("0");
+        } else {
+            quizScoreValueTextView.setText(quizzes.get(position).getLastScore());
+        }
         quizProgressNameTextView.setText(R.string.progress_in_quiz);
-        quizProgressValueTextView.setText("10%");//quizzes.get(position).getLastProgress());
-
+        if (quizzes.get(position).getLastProgress() == 0) {
+            quizProgressValueTextView.setText("0");
+        } else {
+            quizProgressValueTextView.setText(quizzes.get(position).getLastProgress());
+        }
         return output;
     }
 }

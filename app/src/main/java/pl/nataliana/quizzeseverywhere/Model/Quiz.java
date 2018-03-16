@@ -14,8 +14,8 @@ public class Quiz implements Parcelable {
     private String imageResourceUrl;
     private int numberOfQuestions;
     private int isFavorite;
-    private int lastScore;
-    private int lastProgress;
+    private int lastScore = 0;
+    private int lastProgress = 0;
     private int quizId;
 
     public Quiz(String quizName, String quizCategory, String imageResourceUrl, int numberOfQuestions, int isFavorite, int lastScore, int lastProgress, int quizId) {
