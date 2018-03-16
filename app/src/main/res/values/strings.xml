@@ -6,4 +6,8 @@
     <string name="progress_in_quiz">Progress in quiz:</string>
     <string name="quiz_parcelable">Quiz parcelable</string>
     <string name="quiz_id_extra">quiz_id_extra</string>
+    <string name="quiz_title">Quiz Title</string>
+    <string name="geography">geography</string>
+    <string name="last_progress">80%</string>
+    <string name="last_score_mock">8/10</string>
 </resources>

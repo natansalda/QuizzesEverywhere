@@ -7,4 +7,6 @@ package pl.nataliana.quizzeseverywhere;
 public class QuizActivity {
 
     public static final String SINGLE_QUIZ_BASE_URL = "http://quiz.o2.pl/api/v1/quiz/%s/0";
+
+
 }

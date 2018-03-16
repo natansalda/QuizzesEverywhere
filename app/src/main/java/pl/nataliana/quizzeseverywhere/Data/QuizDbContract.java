@@ -12,7 +12,7 @@ public class QuizDbContract {
 
     public static final String CONTENT_AUTHORITY = "pl.nataliana.quizzeseverywhere";
     public static final Uri BASE_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
-    public static final String QUIZZES_PATH = "quizzwes";
+    public static final String QUIZZES_PATH = "quizzes";
 
     public static final class QuizEntry implements BaseColumns {
 

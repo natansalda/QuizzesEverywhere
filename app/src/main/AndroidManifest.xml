@@ -20,6 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <!-- content provider -->
+
+        <provider
+            android:name="pl.nataliana.quizzeseverywhere.Data.QuizDbProvider"
+            android:authorities="pl.nataliana.quizzeseverywhere" />
     </application>
 
 </manifest>
