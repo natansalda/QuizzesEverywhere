@@ -117,10 +117,13 @@ public class MainActivity extends AppCompatActivity {
                     Quiz[] quizList = new Quiz[quizzes.length()];
                     for (int i = 0; i < quizzes.length(); ++i) {
                         JSONObject quiz = quizzes.getJSONObject(i);
+                        JSONArray category = quiz.getJSONArray("categories");
+                        JSONObject catName = category.getJSONObject(0);
+                        JSONObject photo = quiz.getJSONObject("mainPhoto");
                         quizList[i] = new Quiz(
-                                quiz.getString("title"),
-                                quiz.getString("name"), //category's name
-                                quiz.getString("url"), //picture url
+                                quiz.getString("title"), //quiz title
+                                catName.getString("name"), //category's name
+                                photo.getString("url"), //picture url
                                 quiz.getInt("questions"), //num of questions
                                 quiz.getInt("id")); //quiz id
                     }
