@@ -1,19 +1,21 @@
 package pl.nataliana.quizzeseverywhere;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.RequestHandle;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName(); // For tagging purposes
     private QuizAdapter quizAdapter;
     private ListView listView;
+    private Quiz quiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.quiz_list_view);
 
         if (savedInstanceState == null) {
-            if (isOnline() == true) {
+            if (isOnline()) {
                 showQuizes();
             } else {
                 showOffline();
@@ -82,9 +85,31 @@ public class MainActivity extends AppCompatActivity {
                 int QuizID = quiz.getQuizId();
                 intent.putExtra(getString(R.string.quiz_id_extra), QuizID);
                 intent.putExtra(getString(R.string.quiz_parcelable), quiz);
+                addToFav(QuizID);
                 startActivity(intent);
             }
         });
+    }
+
+    // Add quiz to the database
+    private void addToFav(int QuizID) {
+
+        Uri uri = QuizDbContract.QuizEntry.CONTENT_URI;
+        ContentResolver resolver = this.getContentResolver();
+        ContentValues values = new ContentValues();
+        values.clear();
+
+        values.put(QuizDbContract.QuizEntry.QUIZ_NAME, quiz.getQuizName());
+        values.put(QuizDbContract.QuizEntry.QUIZ_CATEGORY, quiz.getQuizCategory());
+        values.put(QuizDbContract.QuizEntry.QUIZ_IMAGE, quiz.getImageResourceUrl());
+        values.put(QuizDbContract.QuizEntry.QUIZ_NUMBER_OF_QUESTIONS, quiz.getNumberOfQuestions());
+        values.put(QuizDbContract.QuizEntry.QUIZ_IS_FAV, quiz.getIsFavorite());
+        values.put(QuizDbContract.QuizEntry.QUIZ_LAST_SCORE, quiz.getLastScore());
+        values.put(QuizDbContract.QuizEntry.QUIZ_LAST_PROGRESS, quiz.getLastProgress());
+        values.put(QuizDbContract.QuizEntry.QUIZ_ID, QuizID);
+
+        Uri check = resolver.insert(uri, values);
+        Toast.makeText(getApplicationContext(), "Quiz added to favorites!", Toast.LENGTH_LONG).show();
     }
 
     @Override
