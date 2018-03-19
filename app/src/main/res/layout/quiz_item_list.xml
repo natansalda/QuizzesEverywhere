@@ -18,12 +18,12 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="32sp"
-        tools:text="@string/quiz_title" />
+        tools:text="@string/title_tools" />
 
     <ImageView
         android:id="@+id/list_item_quiz_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
         android:contentDescription="@string/quiz_image"
         android:src="@drawable/ic_launcher_background" />

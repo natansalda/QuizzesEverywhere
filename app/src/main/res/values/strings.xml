@@ -10,4 +10,10 @@
     <string name="geography">geography</string>
     <string name="last_progress">80%</string>
     <string name="last_score_mock">8/10</string>
+    <string name="question_image">Question image</string>
+    <string name="first_answer">First answer</string>
+    <string name="fourth_answer">Fourth answer</string>
+    <string name="third_answer">Third answer</string>
+    <string name="second_answer">Second answer</string>
+    <string name="title_tools">Quiz title</string>
 </resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/list_item_question_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        tools:text="What is the question in this quiz?" />
+
+    <ImageView
+        android:id="@+id/list_item_question_image"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/question_image"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/list_item_first_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="8sp"
+        tools:text="@string/first_answer" />
+
+    <TextView
+        android:id="@+id/list_item_second_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="8sp"
+        tools:text="@string/second_answer" />
+
+    <TextView
+        android:id="@+id/list_item_third_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="8sp"
+        tools:text="@string/third_answer" />
+
+    <TextView
+        android:id="@+id/list_item_forth_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="8sp"
+        tools:text="@string/fourth_answer" />
+
+    <View style="@style/Divider" />
+
+</LinearLayout>

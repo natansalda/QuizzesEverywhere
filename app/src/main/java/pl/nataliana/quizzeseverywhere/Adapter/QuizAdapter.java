@@ -1,7 +1,6 @@
 package pl.nataliana.quizzeseverywhere.Adapter;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
 import pl.nataliana.quizzeseverywhere.Model.Quiz;
 import pl.nataliana.quizzeseverywhere.R;
 
@@ -56,7 +54,7 @@ public class QuizAdapter extends ArrayAdapter {
         View output = convertView;
         if (output == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            output = inflater.inflate(R.layout.quiz_card_view_item, parent, false);
+            output = inflater.inflate(R.layout.quiz_item_list, parent, false);
         }
 
         TextView quizTitleTextView = output.findViewById(R.id.list_item_quiz_title);
